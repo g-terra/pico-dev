@@ -1,0 +1,18 @@
+[project]
+name = "pico-dev"
+version = "0.1.0"
+description = "CLI to scaffold Pico projects"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.7"
+dependencies = ["typer>=0.9"]
+
+[project.scripts]
+pico-dev = "pico_dev.cli:app"
+
+[tool.setuptools]
+packages = ["pico_dev"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+pico_dev = ["templates/default/**"]
+
