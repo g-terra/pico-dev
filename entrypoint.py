@@ -24,6 +24,9 @@ def push_all():
 def clean_all():
     run_cmd(["mpremote", "rm", "-r", "-v", ":"])
 
+def shell():
+    run_cmd(["mpremote", "connect", DEVICE, "repl"])
+
 def list_tree():
     tree = defaultdict(list)
 
@@ -58,11 +61,12 @@ COMMANDS = {
     "sync": push_all,
     "clean": clean_all,
     "list": list_tree,
+    "shell": shell,
 }
 
 def main():
     if len(sys.argv) < 2 or sys.argv[1] not in COMMANDS:
-        print("Usage: run | sync | clean | list")
+        print("Usage: run | sync | clean | list | shell")
         sys.exit(1)
     COMMANDS[sys.argv[1]]()
 
