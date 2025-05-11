@@ -51,19 +51,14 @@ You can create a new project using the interactive CLI or a direct command:
 ### Interactive mode:
 
 ```bash
-pico-dev new
+pico-dev new my-pico-project
 ```
 
-It will prompt:
-
-```
-Project name: my-pico-project
-```
 
 ### One-liner:
 
 ```bash
-pico-dev new my-pico-project
+pico-dev new test-2
 ```
 
 Result:
@@ -75,6 +70,11 @@ my-pico-project/
     └── main.py
 ```
 
+for more options check
+```bash
+pico-dev --help
+```
+
 ---
 
 ## 🔌 Using the Project
@@ -82,13 +82,20 @@ my-pico-project/
 Inside your project folder:
 
 ```bash
+make init    # Install all dependencies
 make run     # Run main.py on the Pico
 make sync    # Upload code to the Pico
 make list    # View Pico file tree
 make clean   # Delete all files from Pico
 ```
 
-> Make sure your Pico is connected at `/dev/ttyACM0`. You can override this with `DEVICE=/dev/ttyACM1 make run` if needed.
+for web server you also may see
+```bash
+make web      #runs a live server with your current web folder content (html,css,js)
+```
+
+> Make sure your Pico is connected at `/dev/ttyACM0`. You can override this with `DEVICE=/dev/ttyACM1 
+make run` if needed.
 
 ---
 
