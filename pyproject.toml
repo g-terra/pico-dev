@@ -10,9 +10,10 @@ dependencies = ["typer>=0.9"]
 pico-dev = "pico_dev.cli:app"
 
 [tool.setuptools]
-packages = ["pico_dev"]
 include-package-data = true
 
-[tool.setuptools.package-data]
-pico_dev = ["templates/**" ]
+[tool.setuptools.packages.find]
+include = ["pico_dev*"]
 
+[tool.setuptools.package-data]
+pico_dev = ["templates/**"]
