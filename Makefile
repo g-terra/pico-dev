@@ -1,10 +1,9 @@
 IMAGE_NAME = pico-dev
 
 build:
-	docker build -t $(IMAGE_NAME) .
+	docker build ./docker -t $(IMAGE_NAME) -f docker/Dockerfile
 
 install:
 	pipx install . --force
-
 
 .PHONY: build
