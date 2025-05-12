@@ -1,6 +1,6 @@
 # File: cli.py
 import typer
-from pico_dev.commands.new import new as new_command
+
 app = typer.Typer()
 
 @app.callback(invoke_without_command=True)
@@ -8,19 +8,19 @@ def main(
         new: str = typer.Option(
             None,
             "--new",
-            "-new",
+            "-n",
             help="Create a new Pico project",
         ),
         ap: bool = typer.Option(
             False,
             "--ap",
-            "-ap",
+            "-a",
             help="Configure Wi-Fi Access Point with default credentials",
         ),
         web: bool = typer.Option(
             False,
             "--web",
-            "-web",
+            "-w",
             help="Configure a simple web server with necessary libs",
         ),
 ):
@@ -45,6 +45,7 @@ def main(
 
         from pico_dev.services.web_server import (
             configure_web_server,
+            get_web_server_config
         )
 
         if ap:
@@ -56,15 +57,12 @@ def main(
         if ssid and password:
             configure_access_point(root, ssid, password)
 
-        if web:
+        if web or get_web_server_config():
             configure_web_server(root, project_name)
 
         typer.secho("\n🎉 Project setup complete!", fg=typer.colors.GREEN)
         raise typer.Exit()
 
-
-# Register regular subcommand
-app.command()(new_command)
 
 if __name__ == "__main__":
     app()
